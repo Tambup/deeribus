@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 subprocess = "0.2.8"
+show-image = "0.10.1"
