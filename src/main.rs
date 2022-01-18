@@ -29,7 +29,6 @@ fn main(){
                                 let url: String = url[1].clone();
                                 match reqwest::blocking::get(url.clone()) {
                                     Ok(temp) => {
-                                        println!("{:?}", temp);
                                         match temp.bytes() {
                                             Ok(temp) => {
                                                 match image::load_from_memory(&temp) {
@@ -39,7 +38,7 @@ fn main(){
                                                             Err(e) => println!("{}", e)
                                                         }
                                                     },
-                                                    Err(e) => println!("{}", e),
+                                                    Err(_) => (),
                                                 }
                                             },
                                             Err(_) => (),
@@ -47,7 +46,6 @@ fn main(){
                                     },
                                     Err(_) => (),
                                 }
-
                             }
                             match Exec::shell(format!("eog {}", &path)).capture() {
                                 Ok(_) => (),
